@@ -1,11 +1,29 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import '../styles/User.css'
+import api from '../services/api'
 
 export default function User() {
+    const [users, setUsers] = useState([])
+
+
+    useEffect(() => {
+        async function loadUsers() {
+            const response = await api.get('/')
+
+            setUsers(response.data)
+        }
+
+        loadUsers()
+    }, [])
+
     return (
-        <li className="user-space">
-            <img src="https://avatars1.githubusercontent.com/u/59098583?v=4" alt="avatar"/>
-            <h3 className="nickName">Nickname</h3>
-        </li>
+        <ul className="user-space">
+            {users.map(user => (
+                <li>
+                <img src={user.avatar_url} alt={user.login} />
+            <h3 className="nickName">{user.name}</h3>
+            </li>
+            ))}
+        </ul>
     )
 }
