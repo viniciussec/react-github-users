@@ -17,12 +17,14 @@ export default function User() {
     }, [])
 
     return (
-        <ul className="user-space">
+        <ul>
             {users.map(user => (
                 <li>
-                <img src={user.avatar_url} alt={user.login} />
-            <h3 className="nickName">{user.name}</h3>
-            </li>
+                    <div className="user-space">
+                        <img src={user.avatar_url} alt={user.login} />
+                        <h3 className="nickName">{user.login}</h3>
+                    </div>
+                </li>
             ))}
         </ul>
     )

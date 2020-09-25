@@ -12,21 +12,7 @@ export default function Home() {
                 <title>Github Users</title>
             </Head>
             <main>
-                <ul>
                 <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                <User></User>
-                </ul>
             </main>
         </div>
     )

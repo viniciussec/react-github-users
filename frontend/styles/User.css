@@ -22,3 +22,7 @@ h3 {
     font-size: medium;
     margin-left: 10px;
 }
+
+li {
+    list-style-type: none;
+}

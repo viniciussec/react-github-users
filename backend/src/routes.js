@@ -7,7 +7,7 @@ let data
 
 routes.get('/', async (req, res) => {
     const apiRes = await axios.get("https://api.github.com/users")
-    console.log(apiRes.data)
+    //console.log(apiRes.data)
 
     return res.json(apiRes.data)
 })
