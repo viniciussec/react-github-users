@@ -2,8 +2,8 @@ import React from "react"
 import Head from "next/head"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.css'
-import '../components/User'
-import User from "../components/User";
+import '../components/Users'
+import Users from "../components/Users";
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
                 <title>Github Users</title>
             </Head>
             <main>
-                <User></User>
+                <Users></Users>
             </main>
         </div>
     )
