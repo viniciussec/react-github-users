@@ -1,13 +1,27 @@
-.user-space{
+.user-space {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     padding: 7px;
     margin-top: 30px;
     background-color:  #3b5998 ;
     border: 1px white solid;
     width: 500px;
     border-radius: 8px;
+}
+
+.accordion {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+}
+
+.closed-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
 }
 
 img {
