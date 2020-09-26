@@ -11,6 +11,11 @@
     border-radius: 8px;
 }
 
+.accordion-text {
+    display: flex;
+    flex-direction: column;
+}
+
 .accordion {
     background-color: #3b5998;
     color: white;
