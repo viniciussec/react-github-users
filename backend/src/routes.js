@@ -9,7 +9,7 @@ let data
 routes.get('/', async (req, res) => {
     const apiRes = await axios.get("https://api.github.com/users", {
         'headers': {
-            'Authorization': 'token 3a5d249a6b61ad2e3dfd784fc1a822e51f4b7186'
+            'Authorization': 'token a2ab08f22bce59ebd494fec9854762b1f89521a6'
         }
     })
 
@@ -20,7 +20,7 @@ routes.get('/', async (req, res) => {
 routes.get('/:login', async (req, res) => {
     const apiRes = await axios.get(`https://api.github.com/users/${req.params.login}`, {
         'headers': {
-            'Authorization': `token 3a5d249a6b61ad2e3dfd784fc1a822e51f4b7186` 
+            'Authorization': `token a2ab08f22bce59ebd494fec9854762b1f89521a6` 
         }
     })
     return res.json(apiRes.data)
