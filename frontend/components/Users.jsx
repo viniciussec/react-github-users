@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import '../styles/Users.css'
 import api from '../services/api'
-import { Collapse, CardBody, Card } from 'reactstrap';
+import { CardBody, Card, UncontrolledCollapse } from 'reactstrap';
 
 export default function Users() {
     const [users, setUsers] = useState([])
@@ -18,7 +18,7 @@ export default function Users() {
                 const responseInfo = api.get(`/${login}`)
                 return responseInfo
             })
-            
+
             const result = await Promise.all(userInfo)
             const resultArray = result.map(e => e.data)
             setUsers(resultArray)
@@ -36,8 +36,8 @@ export default function Users() {
                             <img onClick={toggle} src={user.avatar_url} alt={user.login} id={user.login} />
                             <h3 onClick={toggle} className="nickName" id={user.login}>{user.login}</h3>
                         </div>
-                        <Collapse isOpen={isOpen}>
-                            <Card className="accordion">
+                        <UncontrolledCollapse toggler={"#"+ user.login}>
+                            <Card  className="accordion">
                                 <CardBody className="accordion-text">
                                     <label>User Name: {user.name}</label>
                                     <label>User Bio: {user.bio}</label>
@@ -47,7 +47,7 @@ export default function Users() {
                                     <label>Number of public repositories: {user.public_repos}</label>
                                 </CardBody>
                             </Card>
-                        </Collapse>
+                        </UncontrolledCollapse>
                     </div>
                 </li>
             ))}
