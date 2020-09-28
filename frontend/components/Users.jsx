@@ -7,15 +7,21 @@ export default function Users() {
     const [users, setUsers] = useState([])
     const [isOpen, setIsOpen] = useState(false);
     const toggle = (e) => {
-        console.log(e.target.id)
         setIsOpen(!isOpen)
     }
 
     useEffect(() => {
         async function loadUsers() {
             const response = await api.get('/')
-
-            setUsers(response.data)
+            const userLogins = response.data.map(user => user.login)
+            const userInfo = userLogins.map(function loadUsersInfo(login) {
+                const responseInfo = api.get(`/${login}`)
+                return responseInfo
+            })
+            
+            const result = await Promise.all(userInfo)
+            const resultArray = result.map(e => e.data)
+            setUsers(resultArray)
         }
 
         loadUsers()
@@ -27,13 +33,18 @@ export default function Users() {
                 <li>
                     <div className="user-space">
                         <div className="closed-user">
-                            <img onClick={toggle} src={user.avatar_url} alt={user.login} id={user.login}/>
+                            <img onClick={toggle} src={user.avatar_url} alt={user.login} id={user.login} />
                             <h3 onClick={toggle} className="nickName" id={user.login}>{user.login}</h3>
                         </div>
                         <Collapse isOpen={isOpen}>
                             <Card className="accordion">
                                 <CardBody className="accordion-text">
-                                    <label>User URL: {user.url}</label>
+                                    <label>User Name: {user.name}</label>
+                                    <label>User Bio: {user.bio}</label>
+                                    <label>User Location: {user.location}</label>
+                                    <label>User Blog: {user.blog} </label>
+                                    <label>Number of followers: {user.followers}</label>
+                                    <label>Number of public repositories: {user.public_repos}</label>
                                 </CardBody>
                             </Card>
                         </Collapse>

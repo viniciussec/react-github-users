@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.css'
 import '../components/Users'
 import Users from "../components/Users";
-import Usersc from "../components/Usersc"
 
 export default function Home() {
     return (

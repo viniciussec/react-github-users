@@ -7,18 +7,23 @@ let data
 
 
 routes.get('/', async (req, res) => {
-    const apiRes = await axios.get("https://api.github.com/users")
+    const apiRes = await axios.get("https://api.github.com/users", {
+        'headers': {
+            'Authorization': 'token a2ab08f22bce59ebd494fec9854762b1f89521a6'
+        }
+    })
 
     return res.json(apiRes.data)
 })
 
 
 routes.get('/:login', async (req, res) => {
-    console.log(req.params)
-    const apiRes = await axios.get(`https://api.github.com/users/${req.params.login}`)
-
+    const apiRes = await axios.get(`https://api.github.com/users/${req.params.login}`, {
+        'headers': {
+            'Authorization': `token a2ab08f22bce59ebd494fec9854762b1f89521a6` 
+        }
+    })
     return res.json(apiRes.data)
 })
 
 module.exports = routes
-
