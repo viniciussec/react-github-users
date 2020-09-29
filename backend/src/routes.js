@@ -3,26 +3,17 @@ const axios = require("axios")
 
 const routes = Router()
 
-let data
-
-
 routes.get('/', async (req, res) => {
-    const apiRes = await axios.get("https://api.github.com/users", {
-        'headers': {
-            'Authorization': 'token a2ab08f22bce59ebd494fec9854762b1f89521a6'
-        }
-    })
+    const apiRes = await axios.get("https://api.github.com/users")
 
-    return res.json(apiRes.data)
+    const result = apiRes.data.filter(user => user.id <= 7)
+    return res.json(result)
 })
 
 
 routes.get('/:login', async (req, res) => {
-    const apiRes = await axios.get(`https://api.github.com/users/${req.params.login}`, {
-        'headers': {
-            'Authorization': `token a2ab08f22bce59ebd494fec9854762b1f89521a6` 
-        }
-    })
+    const apiRes = await axios.get(`https://api.github.com/users/${req.params.login}`)
+
     return res.json(apiRes.data)
 })
 
